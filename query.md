@@ -1,4 +1,9 @@
+
 Queries in Pathivu can be used to aggregate log data and perform operations on it. Multiple queries can be piped up to perform a complex action. 
+
+Queries can be made using to media in Pathivu:
+* **Pathivu Web**: This is the web user-interface for Pathivu. It provides a simple UI for querying pathivu. Learn more about it [here](https://github.com/pathivu/pathivu/README.md).
+* **Katchi CLI**: This is a command line interface which allows seamless querying from the comfort of a terminal. Learn more about how to query using katchi [here](https://docs.pathivu.io/#/katchi)
 
 Pathivu listens for query requests on port `5180` with the use of an HTTP(s) server. This exposes a simple way of sending commands and queries to the Pathivu backend. It currently supports the following queries:
 
@@ -561,3 +566,4 @@ source=master,slave
 This will output all logs with the source as `master` *and* `slave`.
 
 [Go to index](#index)
+
