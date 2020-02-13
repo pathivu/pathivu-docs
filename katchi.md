@@ -97,6 +97,20 @@ Using a `-h` flag provides the same output as running katchi without any argumen
 
 ### Log Discovery
 ---
+Pathivu has an internal namespace for log ingestion across multiple apps. These namespaces can be displayed using the `apps` sub-command, which works in the following way:
+
+```sh
+$ katchi apps
+App Names
+svc1
+svc2
+svc3
+svc4
+svc5
+```
+Here, the app names that are printed are discrete log ingestion sources that can ship logs to pathivu independently.
+
+A simple use case of this command would be to debug if all log ingestion sources are able to ship logs to pathivu or not, hence this command is very efficient in log service discovery. 
 
 
 [Go to index](#index)
@@ -106,10 +120,48 @@ Using a `-h` flag provides the same output as running katchi without any argumen
 
 ### Viewing Logs
 ---
+Katchi CLI can be used to view the logs ingested by pathivu. For this purpose, Katchi offers a very intuitive `logs` sub-command, which is useful for both viewing as well as querying the ingestion.
+
+The most minimal requirement for viewing logs in Katchi is to pass in the `--host` flag. Additionally you can also define which application logs to view using the `--apps` flag. Logs in Katchi can be viewed in two modes:
 
 <h4 id="static-view"> Static View </h4>
+Static view dumps all of the logs to *stdout*. For example, the following query can be used for viewing all of the logs ingested by the provided host and application.
+
+```sh
+$ katchi logs --host=localhost:6180 --apps=demo
+{
+  "data": [
+    {
+      "ts": 2,
+      "entry": {
+        "country": "pakistan"
+      },
+      "source": "demo"
+    }, 
+    {
+      "ts": 1,
+      "entry": {
+        "country": "india"
+      },
+      "source": "demo"
+    }
+  ]
+}
+```
+
 
 <h4 id="tailing-view"> Tailing View </h4>
+
+The `logs` sub-command can be replaced by `tail`, which watches for logs and displays them in real-time. For example, the following command listens for all logs with the specified host.
+
+```sh
+$ katchi tail --host=localhost:6180
+```
+
+A real-time example is given below:
+
+[![katchi tail](https://asciinema.org/a/301228.png)](https://asciinema.org/a/301228)
+
 
 [Go to index](#index)
 
