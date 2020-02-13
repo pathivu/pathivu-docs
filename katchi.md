@@ -1,5 +1,5 @@
 
-Katchi is a command line interface used to interact with the Pathivu server. It offers a variety of utility and abstraction over a lot of basic functions that you can perform with pathivu. Some of these functionalities are indexed below. If you wish for any additional funcitonality to be integrated then feel free to open an [issue](https://github.com/pathivu/pathivu/issues).
+Katchi is a command line interface used to interact with the Pathivu server. It offers a variety of utility and abstraction over a lot of basic functions that you can perform with pathivu. Some of these functionalities are indexed below. If you wish for any additional functionality to be integrated then feel free to open an [issue](https://github.com/pathivu/pathivu/issues).
 
 ---
 
@@ -66,7 +66,7 @@ Flags:
 Use "katchi [command] --help" for more information about a command.
 ```
 
-Katchi uses an environment variable to know which host your pathivu server is ruinning on. If your server is running on localhost, you can set up your host by running the following command, where port `6180` is actually what the pathivu gRPC server listens on. 
+Katchi uses an environment variable to know which host your pathivu server is running on. If your server is running on localhost, you can set up your host by running the following command, where port `6180` is actually what the pathivu gRPC server listens on. 
 
 ```sh
 $ export PATHIVU_HOST=localhost:6180
@@ -170,7 +170,33 @@ A real-time example is given below:
 
 ### Querying Logs
 ---
+Katchi CLI has a very powerful query engine for viewing logs. It can be invoked by using the `--query` flag in the `log` sub-command.
 
+A typical query in katchi looks like this:
+
+```sh
+$ katchi logs --host=localhost:6180 --apps=demo --query="distinct(country) as ctry"
+{
+  "data": ["pakistan", "india"]
+}
+```
+The aforementioned command prints out the names of the distinct countries in the `demo` source log payload. 
+
+To view the logs from a particular time, `--since` can be used. Here, a duration can be passed. For example, the following command prints the count of countries in the log payload since the last 3 hours:
+
+```sh
+$ katchi logs --host=localhost:6180 --apps=demo --query="count(country) as ctry_count" --since=3h
+```
+The following notations are available for `--since` flag in katchi. If you want more duration notations, to be integrated then feel free to open an [issue](https://github.com/pathivu/pathivu/issues).
+
+| Duration | Katchi Notation |
+|:----------:|:-----------------------------------:|
+| Hours | h |
+| Seconds | s | 
+| Minutes | m | 
+
+
+View more supported queries in the [query section](https://docs.pathivu.io/#/query) of the documentation.
 
 [Go to index](#index)
 
