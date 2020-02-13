@@ -1,6 +1,9 @@
-Pathivu currently support query like selection, average, distinct and count. If you would like to see more query features, please feel free to open an [issue](https://github.com/pathivu/pathivu/issues)
 
 Queries in Pathivu can be used to aggregate log data and perform operations on it. Multiple queries can be piped up to perform a complex action. 
+
+Queries can be made using to media in Pathivu:
+* **Pathivu Web**: This is the web user-interface for Pathivu. It provides a simple UI for querying pathivu. Learn more about it [here](https://github.com/pathivu/pathivu/README.md).
+* **Katchi CLI**: This is a command line interface which allows seamless querying from the comfort of a terminal. Learn more about how to query using katchi [here](https://docs.pathivu.io/#/katchi)
 
 Pathivu listens for query requests on port `5180` with the use of an HTTP(s) server. This exposes a simple way of sending commands and queries to the Pathivu backend. It currently supports the following queries:
 
@@ -76,7 +79,7 @@ Consider the following JSON
 
 Pathivu supports two types of search queries, namely fuzzy search and structured query search.
 
-<h6 id="fuzzysearch"> Fuzzy Search </h4>
+<h6 id="fuzzysearch"> Fuzzy Search </h6>
 
 The `message` keyword is used for fuzzy searching in Pathivu. The fuzziness level is configurable. A simple example is given below:
 ```sh
@@ -102,7 +105,7 @@ This query will give you the following output:
 
 [Go to index](#index)
 
-<h6 id="structuredsearch"> Structured Search </h4>
+<h6 id="structuredsearch"> Structured Search </h6>
 
 Flattened JSON fields can be used for structured query searches and exact matches. In the following example, we are querying the logs which have error code 500 within an embedded struct.
 
@@ -181,7 +184,7 @@ Consider the following log JSON:
 }
 ```
 
-<h6 id="basecount"> Base Count </h4>
+<h6 id="basecount"> Base Count </h6>
 
 Base count is a powerful command that can be used for counting the number of logs that exist for a particular field. For example, the example below gives the count of all logs with `from` defined.
 
@@ -201,7 +204,7 @@ Running this command will give you the following output:
 }
 ```
 
-<h6 id="aggregatedcount"> Aggregated Count </h4>
+<h6 id="aggregatedcount"> Aggregated Count </h6>
 
 Aggregations can be added in the count query for grouping fields accoring to a particular field. This can be achieved using the `by` keyword. For example, the following query will count all `level` fields and group them by the `from`. 
 
@@ -301,7 +304,7 @@ Let us consider the following log JSON:
 ```
 
 
-<h6 id="baseaverage"> Base Average </h4>
+<h6 id="baseaverage"> Base Average </h6>
 
 The following query will find the average latency of your service.
 
@@ -321,7 +324,7 @@ The output looks like this:
 }
 ```
 
-<h6 id="aggregatedaverage"> Aggregated Average </h4>
+<h6 id="aggregatedaverage"> Aggregated Average </h6>
 
 Average also supports aggregations. For example, the follwoing query will country-wise average latency.
 
@@ -360,7 +363,7 @@ The output looks like this:
 
 Distinct elements can be found, aggregated and printed using the `distinct` keyword. The distinct command also provides a feature to count the number of distinct logs matched.
 
-<h6 id="basedistinct"> Base Distinct </h4>
+<h6 id="basedistinct"> Base Distinct </h6>
 
 Following the example from [count](#count), the following command will give you a list of all distinct levels in the logs. 
 
@@ -379,7 +382,7 @@ The output will look something like this:
 }
 ```
 
-<h6 id="countdistinct"> Count Distinct </h4>
+<h6 id="countdistinct"> Count Distinct </h6>
 
 In order to find distinct value count, you can use `distinct_count` keyword. The following command will give you a list of all distinct levels in the logs along with their count.
 
@@ -563,3 +566,4 @@ source=master,slave
 This will output all logs with the source as `master` *and* `slave`.
 
 [Go to index](#index)
+
