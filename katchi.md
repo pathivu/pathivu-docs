@@ -23,27 +23,24 @@ Katchi is a command line interface used to interact with the Pathivu server. It 
 
 <h4 id="get-katchi"> Get katchi </h4>
 
-You can find the latest release of Pathivu from the [GitHub release page](https://github.com/pathivu/pathivu/releaseshttps://github.com/pathivu/pathivu/releases). After selecting the version that you wish to go for, just run the following commands to get the Katchi CLI:
+You can find the latest release of Pathivu from the [GitHub release page](https://github.com/pathivu/pathivu/releases). After selecting the version that you wish to go for, just run the following commands to get the Katchi CLI:
 
 ```sh
-# Install the pathivu tarball (you can choose a different release)
-$ wget https://github.com/pathivu/pathivu/archive/v0.1-alpha.tar.gz
+# Download the katchi binary (you can choose a different release)
+$ wget https://github.com/pathivu/pathivu/releases/download/v0.1/katchi
 
-# Extract the tarball
-$ tar -xvf v0.1-alpha.tar.gz
+The aforementioned commands will download the katchi binary. 
 ```
-
-The aforementioned commands will create a director with the name of the pathivu release that you downloaded. 
-
 <h4 id="set-up-environment"> Set Up Environment </h4>
 
 To get up and running with the Katchi CLI, run the following commands on your terminal:
 
 ```sh
-# Add katchi to path. Here the directory is named after 
-# the release that you have downloaded on your system
-$ mv ./pathivu-0.1-alpha/katchi/katchi /usr/bin 
+# Add katchi to path.
+$ sudo mv katchi /usr/bin 
 
+# Give execution permission to the katchi binary
+$ sudo chmod u+x /usr/bin/katchi
 # Run the following command. If you see the mentioned output
 # it means that your katchi CLI is working
 $ katchi
