@@ -1,3 +1,4 @@
+
 Katchi is a command line interface used to interact with the Pathivu server. It offers a variety of utility and abstraction over a lot of basic functions that you can perform with pathivu. Some of these functionalities are indexed below. If you wish for any additional funcitonality to be integrated then feel free to open an [issue](https://github.com/pathivu/pathivu/issues).
 
 ---
@@ -21,9 +22,57 @@ Katchi is a command line interface used to interact with the Pathivu server. It 
 ---
 
 
-<h6 id="get-katchi"> Get katchi </h6>
+<h4 id="get-katchi"> Get katchi </h4>
 
-<h6 id="set-up-environment"> Set Up Environment </h6>
+You can find the latest release of Pathivu from the [GitHub release page](https://github.com/pathivu/pathivu/releaseshttps://github.com/pathivu/pathivu/releases). After selecting the version that you wish to go for, just run the following commands to get the Katchi CLI:
+
+```sh
+# Install the pathivu tarball (you can choose a different release)
+$ wget https://github.com/pathivu/pathivu/archive/v0.1-alpha.tar.gz
+
+# Extract the tarball
+$ tar -xvf v0.1-alpha.tar.gz
+```
+
+The aforementioned commands will create a director with the name of the pathivu release that you downloaded. 
+
+<h4 id="set-up-environment"> Set Up Environment </h4>
+
+To get up and running with the Katchi CLI, run the following commands on your terminal:
+
+```sh
+# Add katchi to path. Here the directory is named after 
+# the release that you have downloaded on your system
+$ mv ./pathivu-0.1-alpha/katchi/katchi /usr/bin 
+
+# Run the following command. If you see the mentioned output
+# it means that your katchi CLI is working
+$ katchi
+katch is a cli tool for pathivu, which let's you folks to view all the logs in pathivu
+
+Usage:
+  katchi [command]
+
+Available Commands:
+  apps        apps gives all the app name of logs that has been ingested in the pathivu
+  help        Help about any command
+  logs        query logs 
+  tail        tail all the apps
+
+Flags:
+  -h, --help          help for katchi
+      --host string   pathivu host address
+
+Use "katchi [command] --help" for more information about a command.
+```
+
+Katchi uses an environment variable to know which host your pathivu server is ruinning on. If your server is running on localhost, you can set up your host by running the following command, where port `6180` is actually what the pathivu gRPC server listens on. 
+
+```sh
+$ export PATHIVU_HOST=localhost:6180
+```
+If you have executed all of these commands successfully then your Katchi CLI is set up and good to go for the particular shell session. Optionally you can add the `PATHIVU_HOST` environment variable in your `~/.bashrc` for permanent residency across terminal sessions. 
+
 
 [Go to index](#index)
 
@@ -31,7 +80,15 @@ Katchi is a command line interface used to interact with the Pathivu server. It 
 
 ### Usage
 ---
+Running `katchi` without any command line arguments prints out the usage of the command line utility. All of the provided functionalities can be used as keywords while calling pathivu using katchi:
 
+
+```sh
+katchi [function] [flags]
+```
+Using a `-h` flag provides the same output as running katchi without any arguments. Both of them can be used for help.
+
+[![Katchi Help](https://asciinema.org/a/301161.png)](https://asciinema.org/a/301161)
 
 [Go to index](#index)
 
@@ -50,9 +107,9 @@ Katchi is a command line interface used to interact with the Pathivu server. It 
 ### Viewing Logs
 ---
 
-<h6 id="static-view"> Static View </h6>
+<h4 id="static-view"> Static View </h4>
 
-<h6 id="tailing-view"> Tailing View </h6>
+<h4 id="tailing-view"> Tailing View </h4>
 
 [Go to index](#index)
 
@@ -66,3 +123,4 @@ Katchi is a command line interface used to interact with the Pathivu server. It 
 [Go to index](#index)
 
 <br>
+
