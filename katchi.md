@@ -1,4 +1,3 @@
-
 Katchi is a command line interface used to interact with the Pathivu server. It offers a variety of utility and abstraction over a lot of basic functions that you can perform with pathivu. Some of these functionalities are indexed below. If you wish for any additional functionality to be integrated then feel free to open an [issue](https://github.com/pathivu/pathivu/issues).
 
 ---
@@ -191,9 +190,9 @@ The following notations are available for `--since` flag in katchi. If you want 
 
 | Duration | Katchi Notation |
 |:----------:|:-----------------------------------:|
-| Hours | h |
 | Seconds | s | 
 | Minutes | m | 
+| Hours | h |
 
 
 View more supported queries in the [query section](https://docs.pathivu.io/#/query) of the documentation.
